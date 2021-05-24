@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block body %}
+<style>
+    #inner {  
+  margin-top: 10%;
+}
+
+#outer {
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+    </style>
+<!-- Button trigger modal -->
+<div id="outer">
+    <div id="inner">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color: transparent;border: none;outline: none;">
+            <img src="{% static 'images/medical_button.png' %}" style="width: 640px; height:360;outline: none;"/>
+        </button> 
+    </div>
+</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel" style="color: crimson;">Warning</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            This Application is experimental.
+             Does not includes any proven approach. 
+             If you agree to use this application under these restrictions please click on "Agree" button.
+        </div>
+        <div class="modal-footer">
+            <button id='close' type="button" class="btn btn-secondary" style="background-color:royalblue;" role="button">Close</button>
+          <a href="/record" type="button" id='agree' class="btn btn-primary" style="background-color:lightseagreen;">Agree</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#close").click(function(){
+            $("#staticBackdrop").modal('toggle');
+        });
+    });
+</script>
+{% endblock body %}
